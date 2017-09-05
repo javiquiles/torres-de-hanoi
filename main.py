@@ -8,24 +8,24 @@ def dibujarTorres():
     for fila in torres:
         for col in fila:
             if col == 0:
-                print "            |            ",
+                print("            |            ", end="")
             elif col == 1:
-                print "          [///]          ",
+                print("          [///]          ", end="")
             elif col == 2:
-                print "         [/////]         ",
+                print("         [/////]         ", end="")
             elif col == 3:
-                print "        [///////]        ",
+                print("        [///////]        ", end="")
             elif col == 4:
-                print "       [/////////]       ",
+                print("       [/////////]       ", end="")
             elif col == 5:
-                print "      [///////////]      ",
+                print("      [///////////]      ", end="")
             elif col == 6:
-                print "     [/////////////]     ",
+                print("     [/////////////]     ", end="")
             elif col == 7:
-                print "    [///////////////]    ",
-        print
-    print "="*77
-    print "            1                         2                         3            "
+                print("    [///////////////]    ", end="")
+        print()
+    print("="*77)
+    print("            1                        2                        3            ")
     time.sleep(1)
 
 # Nos devuelve el disco de arriba de la columna col, sino devuelve 0.
@@ -60,7 +60,7 @@ def hanoiGrafico(n, origen=1, auxiliar=2, destino=3):
         disco = buscarDiscoArriba(origen-1)
         eliminarDiscoArriba(origen-1)
         torres[buscarEspacioArriba(destino-1)][destino-1] = disco
-        print "\n"*40
+        print("\n"*40)
         dibujarTorres()
         hanoiGrafico(n-1, auxiliar, origen, destino) # n-1 discos de la torre auxiliar a la torre final.
 
@@ -69,19 +69,19 @@ def hanoiTexto(n, origen=1, auxiliar=2, destino=3):
 
     if n > 0:
         hanoiTexto(n-1, origen, destino, auxiliar) # n-1 discos de la torre origen a la torre auxiliar.
-        print "Se mueve el disco %d de torre %d a la torre %d" % (n, origen, destino) # disco n a la torre destino.
+        print("Se mueve el disco %d de torre %d a la torre %d" % (n, origen, destino)) # disco n a la torre destino.
         hanoiTexto(n-1, auxiliar, origen, destino) # n-1 discos de la torre auxiliar a la torre final.
 
-print "\n"*40
-print "     TORRES DE HANOI     "
-print "*"*25
+print("\n"*40)
+print("     TORRES DE HANOI     ")
+print("*"*25)
 modo = int(input("Ingrese la opcion deseada:\n\n1) Modo grafico\n2) Modo texto\n\n"))
 
-if (modo == 1):
+if modo == 1:
     discos = int(input("\nIngrese entre 1 y 7 discos: "))
 
     # Defino la matriz para el gráfico
-    if (discos > 0 and discos < 8):
+    if discos > 0 and discos < 8:
         if discos == 1:
             torres = [[0,0,0],[1,0,0]]
         elif discos == 2:
@@ -97,18 +97,18 @@ if (modo == 1):
         elif discos == 7:
             torres = [[0,0,0],[1,0,0],[2,0,0],[3,0,0],[4,0,0],[5,0,0],[6,0,0],[7,0,0]]
 
-        print "\n"*40
+        print("\n"*40)
         dibujarTorres()
         hanoiGrafico(discos)
     else:
-        print "\nERROR! Solo se permiten de 1 a 7 discos para el modo grafico."
-elif (modo == 2):
+        print("\nERROR! Solo se permiten de 1 a 7 discos para el modo grafico.")
+elif modo == 2:
     discos = int(input("\nIngrese numero de discos: "))
 
-    if (discos > 0):
-        print "\n"
+    if discos > 0:
+        print()
         hanoiTexto(discos)
     else:
-        print "\nERROR! Ingrese un numero mayor a 0."
+        print("\nERROR! Ingrese un numero mayor a 0.")
 else:
-    print "\nERROR! La opcion ingresada es incorrecta."
+    print("\nERROR! La opcion ingresada es incorrecta.")
